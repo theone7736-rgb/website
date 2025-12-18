@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chess Achievement Tracker</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background: #121212;
+color: #fff;
+padding: 20px;
+}
+h1 { text-align: center; }
+.category {
+margin-top: 25px;
+}
+.achievement {
+display: flex;
+align-items: center;
+margin: 8px 0;
+}
+input[type="checkbox"] {
+transform: scale(1.3);
+margin-right: 10px;
+}
+.progress {
+margin-top: 20px;
+text-align: center;
+font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<h1>♟️ Chess Achievement Tracker</h1>
+
+<div id="achievements"></div>
+
+<div class="progress" id="progress"></div>
+
+<script>
+const data = {
+"Beginner": [
+"First Blood – Win a game",
+"Safe King – Castle before move 10",
+"No Queen Drops – Win without losing queen"
+],
+"Tactical": [
+"Fork It Over – Fork king + queen/rook",
+"Pinned Down – Win material from a pin",
+"Trap Card – Trap opponent’s queen"
+],
+"Checkmates": [
+"Back Door – Back-rank mate",
+"Pillow Fight – Smothered mate",
+"Pawn Power – Mate with a pawn"
+],
+"Hard / Legendary": [
+"Queen Sacrifice – Sac queen and win",
+"Mate in 20",
+"Bishop & Knight Mate",
+"Comeback King – Win from -5"
+]
+};
+
+const container = document.getElementById("achievements");
+
+Object.keys(data).forEach(cat => {
+const div = document.createElement("div");
+div.className = "category";
+div.innerHTML = `<h2>${cat}</h2>`;
+
+data[cat].forEach(name => {
+const id = name;
+const checked = localStorage.getItem(id) === "true";
+div.innerHTML += `
+<div class="achievement">
+<input type="checkbox" ${checked ? "checked" : ""}
+onchange="localStorage.setItem('${id}', this.checked); updateProgress();">
+<label>${name}</label>
+</div>`;
+});
+container.appendChild(div);
+});
+
+function updateProgress() {
+const total = document.querySelectorAll("input").length;
+const done = document.querySelectorAll("input:checked").length;
+document.getElementById("progress").innerText =
+`Progress: ${done} / ${total} achievements completed`;
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>
