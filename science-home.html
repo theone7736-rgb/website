@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Slide Square</title>
@@ -13,12 +13,13 @@
     left: 0;            /* start from the left */
     
     /* Animation */
-    animation: slide 5s linear infinite;
+    animation: slide 5s linear 1;
   }
 
   @keyframes slide {
     0%   { left: 0; }         /* start at left */
     100% { left: 90%; }       /* move to almost right edge */
+      90% { left: 10%; }       /* move to almost right edge */
   }
 </style>
 </head>
