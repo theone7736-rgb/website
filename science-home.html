@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide Square</title>
+<style>
+  .square {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute; /* needed to move freely */
+    top: 100px;         /* vertical position */
+    left: 0;            /* start from the left */
+    
+    /* Animation */
+    animation: slide 5s linear infinite;
+  }
+
+  @keyframes slide {
+    0%   { left: 0; }         /* start at left */
+    100% { left: 90%; }       /* move to almost right edge */
+  }
+</style>
+</head>
+<body>
+  <div class="square"></div>
+</body>
+</html>
