@@ -1,59 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Edodnan – the website</title>
+<meta charset="UTF-8">
+<title>Edodnan</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+  }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-      background: #f4f4f4;
-    }
+  h1 {
+    font-size: 50px;
+    color: black;
+    margin-bottom: 40px;
+  }
 
-    h1 {
-      margin-bottom: 30px;
-    }
+  .links-container {
+    display: flex;
+    justify-content: flex-start; /* centers the links horizontally */
+    gap: 40px; /* space between links */
+  }
 
-    .links-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+  .link-block {
+    text-decoration: none;
+    color: black;
+  }
 
-    .link-block {
-      text-decoration: none;
-      color: black;
-      width: 200px;
-      background: white;
-      border: 2px solid #000;
-      padding: 15px;
-      border-radius: 10px;
-      transition: transform 0.2s;
-    }
+  .link-block img {
+    display: block;
+    width: 300px;
+    height: auto;
+    margin: 10px auto;
+  }
 
-    .link-block:hover {
-      transform: scale(1.05);
-    }
-
-    .link-block p {
-      margin: 0;
-      font-weight: bold;
-    }
-
-    .link-block img {
-      width: 100%;
-      height: auto;
-      margin-top: 10px;
-    }
-  </style>
+  .link-block p {
+    font-size: 20px;
+  }
+</style>
 </head>
-
 <body>
-
   <h1>Edodnan – the website</h1>
 
   <div class="links-container">
@@ -61,17 +49,14 @@
       <p>Learn about space</p>
       <img src="images/Science-facts.png" alt="Space Facts">
     </a>
-
     <a class="link-block" href="https://theone7736-rgb.github.io/edodnan/chess.html">
       <p>Cool chess challenges</p>
       <img src="images/chess.png" alt="Chess Challenge">
     </a>
-
     <a class="link-block" href="https://theone7736-rgb.github.io/edodnan/games-home.html">
       <p>Fun games to play</p>
       <img src="images/games.png" alt="Fun games to play">
     </a>
   </div>
-
 </body>
 </html>
