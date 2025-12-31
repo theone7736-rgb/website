@@ -8,26 +8,38 @@
 <style>
   body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
   }
 
   .search-container {
-    padding: 10px;
+    padding: 20px;
     background-color: #f2f2f2;
-    max-width: 400px;
+    max-width: 900px;     /* 🔹 makes it wide */
+    width: 100%;          /* 🔹 fills available space */
+    margin: auto;         /* 🔹 centers it */
+    border-radius: 8px;
+  }
+
+  .search-row {
+    display: flex;
+    gap: 10px;
   }
 
   .search-box {
-    padding: 6px;
-    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;              /* 🔹 fills the row */
   }
 
   .search-button {
-    padding: 6px 10px;
+    padding: 10px 16px;
+    font-size: 16px;
     cursor: pointer;
   }
 
   .suggestion {
-    margin-top: 10px;
+    margin-top: 12px;
     color: blue;
     cursor: pointer;
     text-decoration: underline;
@@ -41,17 +53,18 @@
   <h1>Website Title</h1>
 
   <div class="search-container">
-    <label for="site-search">Search the site:</label><br>
+    <label for="site-search">Search the site:</label>
 
-    <input type="search" id="site-search" class="search-box" placeholder="Enter query...">
-    <button class="search-button" onclick="handleSearch()">Search</button>
+    <div class="search-row">
+      <input type="search" id="site-search" class="search-box" placeholder="Enter query...">
+      <button class="search-button" onclick="handleSearch()">Search</button>
+    </div>
 
     <div id="result"></div>
   </div>
 </header>
 
 <script>
-  // ✅ LIST OF VALID SEARCH TERMS / PAGES
   const pages = [
     "space",
     "science",
@@ -68,18 +81,15 @@
 
     if (!input) return;
 
-    // ✅ Exact match → go directly
     if (pages.includes(input)) {
       window.location.href = "https://edodnan.com/search/" + input;
       return;
     }
 
-    // ❌ Not found → find closest match
     let closest = pages.reduce((best, current) => {
       return similarity(input, current) > similarity(input, best) ? current : best;
     });
 
-    // Show suggestion
     const suggestion = document.createElement("div");
     suggestion.className = "suggestion";
     suggestion.textContent = `Did you mean "${closest}"?`;
@@ -90,7 +100,6 @@
     resultDiv.appendChild(suggestion);
   }
 
-  // 🔍 Simple similarity checker
   function similarity(a, b) {
     let matches = 0;
     for (let char of a) {
