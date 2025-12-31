@@ -80,32 +80,67 @@
 </header>
 <main>
 <script>
-  // 🔹 Your searchable pages (add as many as you want)
+  // 🔹 Searchable pages (simple list, spaces allowed)
   const pages = [
-    "space", "science", "games", "facts", "history", "math",
-    "planets", "stars", "physics", "chemistry", "biology",
-    "coding", "javascript", "html", "css", "python",
-    "algebra", "geometry", "calculus", "statistics",
-    "rockets", "astronomy", "blackholes", "energy"
+    "space",
+    "science",
+    "games",
+    "facts",
+    "history",
+    "math",
+    "space facts",
+    "solar system",
+    "black holes",
+    "planets",
+    "stars",
+    "physics",
+    "chemistry",
+    "biology",
+    "coding",
+    "javascript",
+    "html",
+    "css",
+    "python",
+    "algebra",
+    "geometry",
+    "calculus",
+    "statistics",
+    "rockets",
+    "astronomy",
+    "energy"
   ];
 
+  // 🔧 Converts titles into clean URLs
+  function makeSlug(text) {
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-");
+  }
+
   function handleSearch() {
-    const input = document.getElementById("site-search").value.toLowerCase().trim();
+    const inputRaw = document.getElementById("site-search").value.trim();
+    const input = inputRaw.toLowerCase().replace(/-/g, " ");
     const resultDiv = document.getElementById("result");
     resultDiv.innerHTML = "";
 
     if (!input) return;
 
-    // ✅ Exact match → go straight there
-    if (pages.includes(input)) {
-      window.location.href = "https://edodnan.com/search/" + input;
+    // ✅ Exact match → redirect immediately
+    const exact = pages.find(
+      page => page.toLowerCase() === input
+    );
+
+    if (exact) {
+      window.location.href =
+        "https://edodnan.com/search/" + makeSlug(exact);
       return;
     }
 
-    // 🔍 Score and sort all pages by similarity
+    // 🔍 Score all pages by similarity
     const scored = pages.map(page => ({
-      name: page,
-      score: similarity(input, page)
+      page,
+      score: similarity(input, page.toLowerCase())
     }))
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score);
@@ -122,9 +157,10 @@
     topResults.forEach(item => {
       const div = document.createElement("div");
       div.className = "suggestion";
-      div.textContent = item.name;
+      div.textContent = item.page;
       div.onclick = () => {
-        window.location.href = "https://edodnan.com/search/" + item.name;
+        window.location.href =
+          "https://edodnan.com/search/" + makeSlug(item.page);
       };
       resultDiv.appendChild(div);
     });
