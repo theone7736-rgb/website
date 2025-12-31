@@ -15,9 +15,9 @@
   .search-container {
     padding: 20px;
     background-color: #f2f2f2;
-    max-width: 900px;     /* 🔹 makes it wide */
-    width: 100%;          /* 🔹 fills available space */
-    margin: auto;         /* 🔹 centers it */
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
     border-radius: 8px;
   }
 
@@ -29,7 +29,7 @@
   .search-box {
     padding: 10px;
     font-size: 16px;
-    flex: 1;              /* 🔹 fills the row */
+    flex: 1;
   }
 
   .search-button {
@@ -39,7 +39,7 @@
   }
 
   .suggestion {
-    margin-top: 12px;
+    margin-top: 8px;
     color: blue;
     cursor: pointer;
     text-decoration: underline;
@@ -65,13 +65,13 @@
 </header>
 
 <script>
+  // 🔹 Your searchable pages (add as many as you want)
   const pages = [
-    "space",
-    "science",
-    "games",
-    "facts",
-    "history",
-    "math"
+    "space", "science", "games", "facts", "history", "math",
+    "planets", "stars", "physics", "chemistry", "biology",
+    "coding", "javascript", "html", "css", "python",
+    "algebra", "geometry", "calculus", "statistics",
+    "rockets", "astronomy", "blackholes", "energy"
   ];
 
   function handleSearch() {
@@ -81,25 +81,41 @@
 
     if (!input) return;
 
+    // ✅ Exact match → go straight there
     if (pages.includes(input)) {
       window.location.href = "https://edodnan.com/search/" + input;
       return;
     }
 
-    let closest = pages.reduce((best, current) => {
-      return similarity(input, current) > similarity(input, best) ? current : best;
+    // 🔍 Score and sort all pages by similarity
+    const scored = pages.map(page => ({
+      name: page,
+      score: similarity(input, page)
+    }))
+    .filter(item => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+    if (scored.length === 0) {
+      resultDiv.textContent = "No results found.";
+      return;
+    }
+
+    // ✅ Show up to 20 results
+    const limit = pages.length > 20 ? 20 : scored.length;
+    const topResults = scored.slice(0, limit);
+
+    topResults.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion";
+      div.textContent = item.name;
+      div.onclick = () => {
+        window.location.href = "https://edodnan.com/search/" + item.name;
+      };
+      resultDiv.appendChild(div);
     });
-
-    const suggestion = document.createElement("div");
-    suggestion.className = "suggestion";
-    suggestion.textContent = `Did you mean "${closest}"?`;
-    suggestion.onclick = () => {
-      window.location.href = "https://edodnan.com/search/" + closest;
-    };
-
-    resultDiv.appendChild(suggestion);
   }
 
+  // 🔍 Simple similarity function
   function similarity(a, b) {
     let matches = 0;
     for (let char of a) {
