@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edodnan Search</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .search-container {
+    padding: 10px;
+    background-color: #f2f2f2;
+    max-width: 400px;
+  }
+
+  .search-box {
+    padding: 6px;
+    width: 70%;
+  }
+
+  .search-button {
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+
+  .suggestion {
+    margin-top: 10px;
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Website Title</h1>
+
+  <div class="search-container">
+    <label for="site-search">Search the site:</label><br>
+
+    <input type="search" id="site-search" class="search-box" placeholder="Enter query...">
+    <button class="search-button" onclick="handleSearch()">Search</button>
+
+    <div id="result"></div>
+  </div>
+</header>
+
+<script>
+  // ✅ LIST OF VALID SEARCH TERMS / PAGES
+  const pages = [
+    "space",
+    "science",
+    "games",
+    "facts",
+    "history",
+    "math"
+  ];
+
+  function handleSearch() {
+    const input = document.getElementById("site-search").value.toLowerCase().trim();
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "";
+
+    if (!input) return;
+
+    // ✅ Exact match → go directly
+    if (pages.includes(input)) {
+      window.location.href = "https://edodnan.com/search/" + input;
+      return;
+    }
+
+    // ❌ Not found → find closest match
+    let closest = pages.reduce((best, current) => {
+      return similarity(input, current) > similarity(input, best) ? current : best;
+    });
+
+    // Show suggestion
+    const suggestion = document.createElement("div");
+    suggestion.className = "suggestion";
+    suggestion.textContent = `Did you mean "${closest}"?`;
+    suggestion.onclick = () => {
+      window.location.href = "https://edodnan.com/search/" + closest;
+    };
+
+    resultDiv.appendChild(suggestion);
+  }
+
+  // 🔍 Simple similarity checker
+  function similarity(a, b) {
+    let matches = 0;
+    for (let char of a) {
+      if (b.includes(char)) matches++;
+    }
+    return matches;
+  }
+</script>
+
+</body>
+</html>
