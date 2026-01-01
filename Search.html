@@ -82,10 +82,35 @@
 <script>
   // 🔹 Searchable pages (simple list, spaces allowed)
   const pages = [
-    "Creation of the universe",// add here◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️◀️
+    "space",
+    "science",
+    "games",
+    "facts",
+    "history",
+    "math",
+    "space facts",
+    "solar system",
+    "black holes",
+    "planets",
+    "stars",
+    "physics",
+    "chemistry",
+    "biology",
+    "coding",
+    "javascript",
+    "html",
+    "css",
+    "python",
+    "algebra",
+    "geometry",
+    "calculus",
+    "statistics",
+    "rockets",
+    "astronomy",
+    "energy"
   ];
 
-  // 🔧 Converts titles into clean URLs
+  // 🔧 Turn titles into clean URL slugs
   function makeSlug(text) {
     return text
       .toLowerCase()
@@ -101,18 +126,18 @@
 
     if (!input) return;
 
-    // ✅ Exact match → redirect immediately
+    // ✅ Exact match → go straight to page
     const exact = pages.find(
       page => page.toLowerCase() === input
     );
 
     if (exact) {
       window.location.href =
-        "https://edodnan.com/search/" + makeSlug(exact);
+        "https://edodnan.com/search/" + makeSlug(exact) + ".html";
       return;
     }
 
-    // 🔍 Score all pages by similarity
+    // 🔍 Score and sort pages by similarity
     const scored = pages.map(page => ({
       page,
       score: similarity(input, page.toLowerCase())
@@ -125,7 +150,7 @@
       return;
     }
 
-    // ✅ Show up to 20 results
+    // ✅ Show up to 20 results (only if more than 20 pages exist)
     const limit = pages.length > 20 ? 20 : scored.length;
     const topResults = scored.slice(0, limit);
 
@@ -135,13 +160,13 @@
       div.textContent = item.page;
       div.onclick = () => {
         window.location.href =
-          "https://edodnan.com/search/" + makeSlug(item.page);
+          "https://edodnan.com/search/" + makeSlug(item.page) + ".html";
       };
       resultDiv.appendChild(div);
     });
   }
 
-  // 🔍 Simple similarity function
+  // 🔍 Simple similarity checker
   function similarity(a, b) {
     let matches = 0;
     for (let char of a) {
