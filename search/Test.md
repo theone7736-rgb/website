@@ -1,4 +1,5 @@
-[<img src="https://edodnan.com.au/images/house.png" height="100" width="100">](https://edodnan.com.au) # The creation of the universe
+[<img src="https://edodnan.com.au/images/house.png" height="100" width="100">](https://edodnan.com.au)  
+# The creation of the universe
 
 Allmost everyone thinks that our universe was made from the big bang theory, but is that true? Mabye not. Today I will share key information from all the top theories: the iconic big bang theory, the stable universe theory, the simulation theory and the unknown theory so that you can make your own conclusion to which one it true.
 
