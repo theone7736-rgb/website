@@ -4,94 +4,183 @@
     <Title> Edodnan </Title>
     <style>
       .table-wrapper {
-      display: flex;
-      flex-direction: column;   /* only matters if multiple items inside */
-      justify-content: center;  /* vertical centering */
-      min-height: 400px;        /* the container must have a height */
+        display: flex;
+        flex-direction: column;   /* only matters if multiple items inside */
+        justify-content: center;  /* vertical centering */
+        min-height: 400px;        /* the container must have a height */
       }
       table {
-      border-collapse: collapse;
-      font-size: 20px;
+        border-collapse: collapse;
+        font-size: 20px;
       }
       td {
-      border: 3px solid #FFFFFF;
-      padding: 10px;
+        border: 3px solid #FFFFFF;
+        padding: 10px;
       }
-     .links-container {
-      display: flex;
-      align-items: center;
-      justify-content: center; /* Changed from flex-start to center */
-      gap: 30px;
+      .links-container {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Changed from flex-start to center */
+        gap: 30px;
       }
       body {
-      background-color: #0c031c;
-      font-family: sans-serif;
-      text-align: center;
-      color: white;
-      margin: 0;
-      min-height: 100vh;
-      background-image: url("https://edodnan.com.au/images/web/Background.png");
-      background-size: cover;      /* fills the screen */
-      background-position: center; /* centers image */
-      background-repeat: no-repeat;
+        background-color: #0c031c;
+        font-family: sans-serif;
+        text-align: center;
+        color: white;
+        margin: 0;
+        min-height: 100vh;
+        background-image: url("https://edodnan.com.au/images/web/Background.png");
+        background-size: cover;      /* fills the screen */
+        background-position: center; /* centers image */
+        background-repeat: no-repeat;
       }
       .square {
-      border-radius: 15px;
-      position: relative;
-      width: 150px;
-      height: 60px;
-      background: #271d47;
-      border: 3px solid white;
+        border-radius: 15px;
+        position: relative;
+        width: 150px;
+        height: 60px;
+        background: #271d47;
+        border: 3px solid white;
+      }
+
+      /* --- Review Carousel Styles --- */
+      .review-carousel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin: 50px auto;
+        max-width: 700px;
+      }
+
+      .review-container {
+        text-align: center;
+        padding: 20px;
+        border: 2px solid #1f6feb;
+        border-radius: 10px;
+        min-width: 300px;
+        background-color: rgba(39, 29, 71, 0.8); /* slightly transparent */
+        color: white;
+      }
+
+      .arrow {
+        background-color: transparent;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        user-select: none;
+        color: white;
+      }
+
+      .arrow:hover {
+        color: #1f6feb;
+      }
+
+      #review-text {
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+
+      #review-author {
+        font-weight: bold;
+        color: #ddd;
       }
     </style>
   </head>
   <body>
-   <main>
-     <div class="links-container">
-     <h1 style="font-size: 40px;"> Edodnan - the website </h1>
-      <a href="https://edodnan.com.au/home.html"> <p><span style="background-color: #ffffff; color: #333333;">Check out our other stuff</span></p> </a>
-     </div>
-       <h2 style="background-color:"> The place where you code your dreams out </h2>
-     <div class="links-container">
-     <div class="square">✅Compatible with everything.</div>
-     <div class="square">✅Learn proper HTML and CSS</div>
-     <div class="square">✅Learn with interactive lessons</div>
-          <div class="square">✅Learn without forgetting</div>
-     </div>
-     <p style="font-weight: bold;"> Why us? We do things differently. Most of the time, people stop learning because they can't remember. Other sites teach you one at a time, but unlike us, they don't revisit topics, making learners forget key aspects. While Edodnan teaches you properties one at a time, we frequently revisit old topics, and using the learning from them, make something big. Here, we don't give you tips to forget, or lessons that might help you later, but the steps to a big project that we will create with you, so that nothing you learn goes to waist.</p>
-     <p>------------------------------</p>
-   
-     <div class="table-wrapper">
-     <table style="background-color: #271d47;">
-<tbody>
-<tr>
-<td>Values</td>
-<td>Edodnan</td>
-<td>other platforms</td>
-</tr>
-<tr>
-<td>Code learning</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Teaching tools</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Hard to forget</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr>
-<td> 1 big project</td>
-<td>✅</td>
-<td>❌ </td>
-</tr>
-</tbody>
-</table>
-     </div>  
-   </main>
+    <main>
+      <div class="links-container">
+        <h1 style="font-size: 40px;"> Edodnan - the website </h1>
+        <a href="https://edodnan.com.au/home.html">
+          <p><span style="background-color: #ffffff; color: #333333;">Check out our other stuff</span></p>
+        </a>
+      </div>
+      <h2 style="background-color:"> The place where you code your dreams out </h2>
+      <div class="links-container">
+        <div class="square">✅Compatible with everything.</div>
+        <div class="square">✅Learn proper HTML and CSS</div>
+        <div class="square">✅Learn with interactive lessons</div>
+        <div class="square">✅Learn without forgetting</div>
+      </div>
+      <p style="font-weight: bold;"> Why us? We do things differently. Most of the time, people stop learning because they can't remember. Other sites teach you one at a time, but unlike us, they don't revisit topics, making learners forget key aspects. While Edodnan teaches you properties one at a time, we frequently revisit old topics, and using the learning from them, make something big. Here, we don't give you tips to forget, or lessons that might help you later, but the steps to a big project that we will create with you, so that nothing you learn goes to waist.</p>
+      <p>------------------------------</p>
+
+      <div class="table-wrapper">
+        <table style="background-color: #271d47;">
+          <tbody>
+            <tr>
+              <td>Values</td>
+              <td>Edodnan</td>
+              <td>other platforms</td>
+            </tr>
+            <tr>
+              <td>Code learning</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Teaching tools</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Hard to forget</td>
+              <td>✅</td>
+              <td>❌</td>
+            </tr>
+            <tr>
+              <td> 1 big project</td>
+              <td>✅</td>
+              <td>❌ </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- --- REVIEW CAROUSEL START --- -->
+      <div class="review-carousel">
+        <button class="arrow left" onclick="prevReview()">&#10094;</button>
+
+        <div class="review-container">
+        <p id="review-author">- John Doe</p>
+          <p id="review-text">"This is the first review."</p>
+        </div>
+
+        <button class="arrow right" onclick="nextReview()">&#10095;</button>
+      </div>
+      <!-- --- REVIEW CAROUSEL END --- -->
+
+    </main>
+
+    <script>
+      const reviews = [
+        { text: "Cool.", author: "anonymous" },
+        { text: "Amazing service! Highly recommend.", author: "anonymous" },
+        { text: "Great corse.", author: "anonymous" },
+        { text: "Excellent quality and support.", author: "anonymous" }
+      ];
+
+      let currentIndex = 0;
+
+      function showReview(index) {
+        const review = reviews[index];
+        document.getElementById("review-text").textContent = `"${review.text}"`;
+        document.getElementById("review-author").textContent = `- ${review.author}`;
+      }
+
+      function nextReview() {
+        currentIndex = (currentIndex + 1) % reviews.length;
+        showReview(currentIndex);
+      }
+
+      function prevReview() {
+        currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+        showReview(currentIndex);
+      }
+
+      // Initialize first review
+      showReview(currentIndex);
+    </script>
   </body>
 </html>
