@@ -27,10 +27,8 @@
         justify-content: center; /* Changed from flex-start to center */
         gap: 30px;
       }
-      body {
+      :root {
         background-color: #0c031c;
-        font-family: sans-serif;
-        text-align: center;
         color: white;
         margin: 0;
         min-height: 100vh;
@@ -38,8 +36,22 @@
         background-size: cover;      /* fills the screen */
         background-position: center; /* centers image */
         background-repeat: no-repeat;
-        font-size: 30px;
       }
+      .lightmode{
+        background-color: #0c031c;
+        color: white;
+        margin: 0;
+        min-height: 100vh;
+        background-image: url("https://edodnan.com.au/images/web/Background2.png");
+        background-size: cover;      /* fills the screen */
+        background-position: center; /* centers image */
+        background-repeat: no-repeat;
+      }
+      body{
+          font-size: 30px;
+        text-align: center;
+        font-family: sans-serif;
+       }
       .square {
         border-radius: 15px;
         position: relative;
