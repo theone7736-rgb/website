@@ -1,246 +1,296 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <Title> Edodnan </Title>
-    <style>
-      #theme-switch {
-        height: 50px;
-        width: 50px;
-        padding: 0;
-        border-radius: 50%;
-        background-color: var(--base-vareant);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      #theme-switch img {
-        fill: var(--primary-color);
-      }
-      #theme-switch img:last-child{
-        display: none;
-      }
-       .darkmode #theme-switch img:first-child{
-        display: none;
-      }
-     .darkmode #theme-switch img:last-child{
+<head>
+  <title>Edodnan</title>
+
+  <style>
+    /* =========================
+       COLOR VARIABLES
+    ========================= */
+    :root {
+      --bg-main: #ebebeb;
+      --text-main: #000000;
+      --card-bg: #ffffff;
+      --card-border: #000000;
+      --accent-bg: #f5f5f5;
+      --highlight: #1f6feb;
+    }
+
+    .darkmode {
+      --bg-main: #0c031c;
+      --text-main: #ffffff;
+      --card-bg: #271d47;
+      --card-border: #ffffff;
+      --accent-bg: rgba(39, 29, 71, 0.85);
+      --highlight: #1f6feb;
+    }
+
+    /* =========================
+       BASE PAGE STYLES
+    ========================= */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: sans-serif;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    /* =========================
+       THEME SWITCH BUTTON
+    ========================= */
+    #theme-switch {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background-color: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    #theme-switch img:last-child {
+      display: none;
+    }
+
+    .darkmode #theme-switch img:first-child {
+      display: none;
+    }
+
+    .darkmode #theme-switch img:last-child {
       display: block;
-      }
-      .relative-text {
-       position: relative;
-       top: -100px;
-      }
-       .table-wrapper {
-        display: flex;
-        flex-direction: column;   /* only matters if multiple items inside */
-        justify-content: center;  /* vertical centering */
-        min-height: 400px;        /* the container must have a height */
-      }
-      table {
-        border-collapse: collapse;
-        font-size: 20px;
-      }
-      td {
-        border: 3px solid #FFFFFF;
-        padding: 10px;
-      }
-      .links-container {
-        display: flex;
-        align-items: center;
-        justify-content: center; /* Changed from flex-start to center */
-        gap: 30px;
-      }
-      :root {
-        background-color: #ebebeb;
-        color: black;
-        margin: 0;
-        min-height: 100vh;
-        background-image: url("https://edodnan.com.au/images/web/transparent.png");
-        background-size: cover;      /* fills the screen */
-        background-position: center; /* centers image */
-        background-repeat: no-repeat;
-      }
-      .darkmode{
-        background-color: #0c031c;
-        color: white;
-        margin: 0;
-        min-height: 100vh;
-        background-image: url("https://edodnan.com.au/images/web/Background2.png");
-        background-size: cover;      /* fills the screen */
-        background-position: center; /* centers image */
-        background-repeat: no-repeat;
-      }
-      body{
-          font-size: 30px;
-        text-align: center;
-        font-family: sans-serif;
-       }
-      .square {
-        border-radius: 15px;
-        position: relative;
-        width: 250px;
-        height: 80px;
-        background: #271d47;
-        border: 3px solid white;
-      }
+    }
 
-      /* --- Review Carousel Styles --- */
-      .review-carousel {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        margin: 50px auto;
-        max-width: 700px;
-      }
+    /* =========================
+       HERO TEXT
+    ========================= */
+    .relative-text {
+      position: relative;
+      top: -100px;
+    }
 
-      .review-container {
-        text-align: center;
-        padding: 20px;
-        border: 2px solid #1f6feb;
-        border-radius: 10px;
-        min-width: 300px;
-        background-color: rgba(39, 29, 71, 0.8); /* slightly transparent */
-        color: white;
-      }
+    /* =========================
+       FEATURE SQUARES
+    ========================= */
+    .links-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 50px 0;
+    }
 
-      .arrow {
-        background-color: transparent;
-        border: none;
-        font-size: 30px;
-        cursor: pointer;
-        user-select: none;
-        color: white;
-      }
+    .square {
+      width: 250px;
+      height: 80px;
+      border-radius: 15px;
+      background-color: var(--card-bg);
+      border: 3px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
 
-      .arrow:hover {
-        color: #1f6feb;
-      }
+    /* =========================
+       TABLE
+    ========================= */
+    .table-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 60px 0;
+    }
 
-      #review-text {
-        font-style: italic;
-        margin-bottom: 10px;
-      }
+    table {
+      border-collapse: collapse;
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      font-size: 20px;
+    }
 
-      #review-author {
-        font-weight: bold;
-        color: #ddd;
-      }
-    </style>
-    <script type="text/javascript" src="darkmode.js" defer> </script>
-  </head>
-  <body>
-    <main>
-      <button id="theme-switch">
-      <img src="images/web/dark-mode.png">
-      <img src="images/web/light-mode.png">
-      </button>
-        <h1 style="font-family: 'Courier New', monospace; font-size: 150px;"> Edodnan - the website </h1>
-      <h2 style="font-size: 50px;" class="relative-text"> The place where you code your dreams out </h2>
-      <div class="links-container">
-        <div class="square">✅Compatible with everything.</div>
-        <div class="square">✅Learn proper HTML and CSS</div>
-        <div class="square">✅Learn with interactive lessons</div>
-        <div class="square">✅Learn without forgetting</div>
-      </div>
-      <p style="font-weight: bold;"> Why us? We do things differently. Most of the time, people stop learning because they can't remember. Other sites teach you one at a time, but unlike us, they don't revisit topics, making learners forget key aspects. While Edodnan teaches you properties one at a time, we frequently revisit old topics, and using the learning from them, make something big. Here, we don't give you tips to forget, or lessons that might help you later, but the steps to a big project that we will create with you, so that nothing you learn goes to waist.</p>
-      <p>------------------------------</p>
+    td {
+      border: 3px solid var(--card-border);
+      padding: 12px;
+    }
 
-      <div class="table-wrapper">
-        <table style="background-color: #271d47;">
-          <tbody>
-            <tr>
-              <td>Values</td>
-              <td>Edodnan</td>
-              <td>other platforms</td>
-            </tr>
-            <tr>
-              <td>Code learning</td>
-              <td>✅</td>
-              <td>✅</td>
-            </tr>
-            <tr>
-              <td>Teaching tools</td>
-              <td>✅</td>
-              <td>✅</td>
-            </tr>
-            <tr>
-              <td>Hard to forget</td>
-              <td>✅</td>
-              <td>❌</td>
-            </tr>
-            <tr>
-              <td> 1 big project</td>
-              <td>✅</td>
-              <td>❌ </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    /* =========================
+       REVIEW CAROUSEL
+    ========================= */
+    .review-carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 80px auto;
+      max-width: 700px;
+    }
 
-      <!-- --- REVIEW CAROUSEL START --- -->
-      <div class="review-carousel">
-        <button class="arrow left" onclick="prevReview()">&#10094;</button>
+    .review-container {
+      background-color: var(--accent-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 10px;
+      padding: 25px;
+      min-width: 300px;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-        <div class="review-container">
-        <p id="review-author">- John Doe</p>
-          <p id="review-text">"This is the first review."</p>
-        </div>
+    .arrow {
+      background: none;
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      color: var(--text-main);
+    }
 
-        <button class="arrow right" onclick="nextReview()">&#10095;</button>
-      </div>
-      <!-- --- REVIEW CAROUSEL END --- -->
- <img src="https://edodnan.com.au/images/web/TFF.png" width=500px>
-    </main>
+    .arrow:hover {
+      color: var(--highlight);
+    }
 
-    <script>
-      const reviews = [
-        { text: "Cool.", author: "anonymous" },
-        { text: "Amazing service! Highly recommend.", author: "anonymous" },
-        { text: "Great corse.", author: "anonymous" },
-        { text: "Excellent quality and support.", author: "anonymous" }
-      ];
+    #review-text {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
 
-      let currentIndex = 0;
+    #review-author {
+      font-weight: bold;
+      opacity: 0.8;
+    }
+  </style>
+</head>
 
-      function showReview(index) {
-        const review = reviews[index];
-        document.getElementById("review-text").textContent = `"${review.text}"`;
-        document.getElementById("review-author").textContent = `- ${review.author}`;
-      }
+<body>
 
-      function nextReview() {
-        currentIndex = (currentIndex + 1) % reviews.length;
-        showReview(currentIndex);
-      }
+<main>
 
-      function prevReview() {
-        currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
-        showReview(currentIndex);
-      }
+  <button id="theme-switch">
+    <img src="images/web/dark-mode.png" width="24">
+    <img src="images/web/light-mode.png" width="24">
+  </button>
 
-      // Initialize first review
-      showReview(currentIndex);
-    </script>
-   <script>
-     let darkmode = localStorage.getItem('darkmode')
-     const themeSwitch = document.getElementById('theme-switch')
+  <h1 style="font-family: 'Courier New', monospace; font-size: 120px;">
+    Edodnan - the website
+  </h1>
 
-     const enableDarkmode = () => {
-       document.body.classList.add('darkmode')
-       localStorage.setItem('darkmode', 'active')
-     }
+  <h2 class="relative-text">
+    The place where you code your dreams out
+  </h2>
 
-     const disableDarkmode = () => {
-       document.body.classList.remove('darkmode')
-       localStorage.setItem('darkmode', 'null')
-     }
+  <div class="links-container">
+    <div class="square">✅ Compatible with everything</div>
+    <div class="square">✅ Learn proper HTML and CSS</div>
+    <div class="square">✅ Interactive lessons</div>
+    <div class="square">✅ Learn without forgetting</div>
+  </div>
 
-      if(darkmode === "active") enableDarkmode()
-       
-     themeSwitch.addEventListener("click", () => {
-       darkmode = localStorage.getItem('darkmode')
-       darkmode !== "active" ? enableDarkmode() : disableDarkmode()
-     })
-   </script>
-  </body>
+  <p style="font-weight:bold; max-width: 900px; margin: auto;">
+    Why us? We do things differently. Most people stop learning because they forget.
+    We revisit old topics, combine knowledge, and build one big project together.
+  </p>
+
+  <p>------------------------------</p>
+
+  <div class="table-wrapper">
+    <table>
+      <tr>
+        <td>Values</td>
+        <td>Edodnan</td>
+        <td>Other platforms</td>
+      </tr>
+      <tr>
+        <td>Code learning</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Teaching tools</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Hard to forget</td>
+        <td>✅</td>
+        <td>❌</td>
+      </tr>
+      <tr>
+        <td>1 big project</td>
+        <td>✅</td>
+        <td>❌</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- REVIEW CAROUSEL -->
+  <div class="review-carousel">
+    <button class="arrow" onclick="prevReview()">&#10094;</button>
+
+    <div class="review-container">
+      <p id="review-author">- anonymous</p>
+      <p id="review-text">"Cool."</p>
+    </div>
+
+    <button class="arrow" onclick="nextReview()">&#10095;</button>
+  </div>
+
+</main>
+
+<script>
+  const reviews = [
+    { text: "Cool.", author: "anonymous" },
+    { text: "Amazing service!", author: "anonymous" },
+    { text: "Great course.", author: "anonymous" },
+    { text: "Excellent quality.", author: "anonymous" }
+  ];
+
+  let currentIndex = 0;
+
+  function showReview(i) {
+    document.getElementById("review-text").textContent = `"${reviews[i].text}"`;
+    document.getElementById("review-author").textContent = `- ${reviews[i].author}`;
+  }
+
+  function nextReview() {
+    currentIndex = (currentIndex + 1) % reviews.length;
+    showReview(currentIndex);
+  }
+
+  function prevReview() {
+    currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+    showReview(currentIndex);
+  }
+
+  showReview(currentIndex);
+</script>
+
+<script>
+  const themeSwitch = document.getElementById("theme-switch");
+  let darkmode = localStorage.getItem("darkmode");
+
+  const enableDarkmode = () => {
+    document.body.classList.add("darkmode");
+    localStorage.setItem("darkmode", "active");
+  };
+
+  const disableDarkmode = () => {
+    document.body.classList.remove("darkmode");
+    localStorage.setItem("darkmode", "null");
+  };
+
+  if (darkmode === "active") enableDarkmode();
+
+  themeSwitch.addEventListener("click", () => {
+    darkmode = localStorage.getItem("darkmode");
+    darkmode !== "active" ? enableDarkmode() : disableDarkmode();
+  });
+</script>
+
+</body>
 </html>
