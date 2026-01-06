@@ -13,10 +13,10 @@
         justify-content: center;
         align-items: center;
       }
-      #theme-switch svg {
+      #theme-switch png {
         fill: var(--primary-color);
       }
-      #theme-switch svg:last-child{
+      #theme-switch png:last-child{
         display: none;
       }
        .darkmode #theme-switch svg:first-child{
@@ -222,12 +222,13 @@
       showReview(currentIndex);
     </script>
    <script>
-     let darkmode = localstorage.getItem('darkmode')
+     let darkmode = localStorage.getItem('darkmode')
      const themeSwitch = document.getElementById('theme-switch')
 
      const enableDarkmode = () => {
        document.body.classList.add('darkmode')
        localStorage.setItem('darkmode', 'active')
+     }
 
      const disableDarkmode = () => {
        document.body.classList.remove('darkmode')
