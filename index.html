@@ -13,6 +13,18 @@
         justify-content: center;
         align-items: center;
       }
+      #theme-switch svg {
+        fill: var(--primary-color);
+      }
+      #theme-switch svg:last-child{
+        display: none;
+      }
+       .darkmode #theme-switch svg:first-child{
+        display: none;
+      }
+     .darkmode #theme-switch svg:last-child{
+      display: block;
+      }
       .relative-text {
        position: relative;
        top: -100px;
@@ -114,6 +126,7 @@
         color: #ddd;
       }
     </style>
+    <script type="text/javascript" src="darkmode.js" defer> </script>
   </head>
   <body>
     <main>
@@ -176,7 +189,7 @@
         <button class="arrow right" onclick="nextReview()">&#10095;</button>
       </div>
       <!-- --- REVIEW CAROUSEL END --- -->
-
+ <img src="https://edodnan.com.au/images/web/TFF.png" width=500px>
     </main>
 
     <script>
@@ -208,6 +221,17 @@
       // Initialize first review
       showReview(currentIndex);
     </script>
-    <img src="https://edodnan.com.au/images/web/TFF.png" width=500px>
+   <script>
+     let darkmode = localstorage.getItem('darkmode')
+     const themeSwitch = document.getElementById('theme-switch')
+
+     const enableDarkmode = () => {
+       document.body.classList.add('darkmode')
+       localStorage.setItem('darkmode', 'active')
+     
+     themeSwitch.addEventListener("click", () => {
+       darkmode !== "active" ? enableDarkmode() : disableDarkmode()
+     })
+   </script>
   </body>
 </html>
