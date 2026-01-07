@@ -3,6 +3,23 @@
   <head>
     <title> Select corses </title>
     <style>
+      .scroll-container {
+      display: flex;          /* arrange items in a row */
+      overflow-x: auto;       /* horizontal scroll */
+      white-space: nowrap;    /* prevent line breaks */
+      border: 2px solid #000; /* just to see the container */
+      padding: 10px;
+      }
+      .item {
+      flex: 0 0 auto;         /* prevents items from shrinking */
+      width: 200px;
+      height: 100px;
+      margin-right: 10px;
+      background-color: #f2a;
+      text-align: center;
+      line-height: 100px;
+      font-weight: bold;
+      }
       header hr {
       margin: 0;
       }
@@ -30,6 +47,14 @@
     <main>
       <h1>Progress menu </h1> 
       <p> <u> Beginners corse</u> (HTML)</p>
+      <div class="scroll-container">
+      <div class="item">Item 1</div>
+      <div class="item">Item 2</div>
+      <div class="item">Item 3</div>
+      <div class="item">Item 4</div>
+      <div class="item">Item 5</div>
+      </div>
+
     </main>
   </body>
 </html>
